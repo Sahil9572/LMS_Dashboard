@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>AI Exam Score Predictor</title></head>
+<body>
+  <h2>Upload Student CSV File</h2>
+  <form method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".csv">
+      <input type="submit" value="Predict">
+  </form>
+
+  {% if results %}
+    <h3>Results:</h3>
+    <table border="1">
+      <tr>
+        <th>Student ID</th>
+        <th>Actual Score</th>
+        <th>Predicted Score</th>
+        <th>AI Feedback</th>
+      </tr>
+      {% for row in results %}
+        <tr>
+          <td>{{ row.student_id }}</td>
+          <td>{{ row.exam_score }}</td>
+          <td>{{ row.predicted_score }}</td>
+          <td>{{ row.ai_feedback }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+</body>
+</html>
